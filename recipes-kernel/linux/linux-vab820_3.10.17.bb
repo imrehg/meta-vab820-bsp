@@ -18,4 +18,6 @@ SRC_URI = "git://github.com/viaembedded/vab820-kernel-bsp.git;protocol=http;bran
 	   file://defconfig;md5=d19065fd9c094ddc4fe78d5cac4bf279 \
 "
 
+S = "${WORKDIR}/git"
+
 COMPATIBLE_MACHINE = "(vab820)"

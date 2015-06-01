@@ -9,7 +9,7 @@ PREFERRED_VERSION_linux-vab820 ?= "3.10.17"
 
 SERIAL_CONSOLE = "115200 ttymxc1"
 
-MACHINE_FEATURES += ""
+MACHINE_FEATURES += " pci rtc"
 
 KERNEL_IMAGETYPE = "uImage"
 
@@ -17,4 +17,4 @@ IMX_TEST_SUPPORT = "y"
 
 DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
-MACHINE_FEATURES_BACKFILL_CONSIDERED = "rtc sysvinit"
+MACHINE_FEATURES_BACKFILL_CONSIDERED = "sysvinit"

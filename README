@@ -14,51 +14,81 @@ This layer depends on:
 
   URI: git://git.openembedded.org/openembedded-core
   layers: meta
-  branch: master
+  branch: fido
 
-  URI: git://git.yoctoproject.org/xxxx
-  layers: xxxx
-  branch: master
-
+  URI: git://git.yoctoproject.org/meta-fsl-arm
+  branch: fido
 
 Patches
 =======
 
 Please submit any patches against the vab820-bsp layer to the
-xxxx mailing list (xxxx@zzzz.org) and cc: the maintainer:
+relevant Github issues page, or to the maintainer:
 
-Maintainer: XXX YYYYYY <xxx.yyyyyy@zzzzz.com>
+Maintainer: Gergely Imreh <imrehg@gmail.com>
 
 
 Table of Contents
 =================
 
   I. Adding the vab820-bsp layer to your build
- II. Misc
+ II. Usage
 
 
 I. Adding the vab820-bsp layer to your build
 =================================================
 
---- replace with specific instructions for the vab820-bsp layer ---
+a. Getting the dependencies
+---------------------------
+
+The easiest way to get the dependencies for this layer is to follow
+the instructions for the FSL community BSP, and then add this layer
+to the ones contained in that BSP.
+
+The install instructions can be found online at:
+http://freescale.github.io/#download
+
+Then copy this layer into the `source` folder in the setup created by
+the steps above.
+
+b. Setting up this layer
+------------------------
 
 In order to use this layer, you need to make the build system aware of
 it.
 
 Assuming the vab820-bsp layer exists at the top-level of your
 yocto build tree, you can add it to the build system by adding the
-location of the vab820-bsp layer to bblayers.conf, along with any
+location of the vab820-bsp layer to `bblayers.conf`, along with any
 other layers needed. e.g.:
 
   BBLAYERS ?= " \
-    /path/to/yocto/meta \
-    /path/to/yocto/meta-yocto \
-    /path/to/yocto/meta-yocto-bsp \
-    /path/to/yocto/meta-vab820-bsp \
-    "
+    ${BSPDIR}/sources/poky/meta \
+    ${BSPDIR}/sources/poky/meta-yocto \
+    \
+    ${BSPDIR}/sources/meta-openembedded/meta-oe \
+    ${BSPDIR}/sources/meta-openembedded/meta-multimedia \
+    \
+    ${BSPDIR}/sources/meta-fsl-arm \
+    ${BSPDIR}/sources/meta-fsl-arm-extra \
+    ${BSPDIR}/sources/meta-fsl-demos \
+    ${BSPDIR}/sources/meta-vab820-bsp \
+  "
 
 
-II. Misc
-========
+II. Usage
+=========
 
---- replace with specific information about the vab820-bsp layer ---
+a. Machines
+-----------
+
+This repo provides the machine description for `vab820-quad`, that can be
+used with the basic openembedded images, or with mx6q images provided by
+Freescale.
+
+b. Known Issues
+---------------
+
+Currently not all patches are reused from the VIA VAB-820 BSP (that is
+developed on an older release of Yocto). The command line interface
+works, but the graphical interface output through HDMI is not yet available.

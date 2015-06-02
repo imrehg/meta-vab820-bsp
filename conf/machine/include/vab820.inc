@@ -14,7 +14,3 @@ MACHINE_FEATURES += " pci rtc"
 KERNEL_IMAGETYPE = "uImage"
 
 IMX_TEST_SUPPORT = "y"
-
-DISTRO_FEATURES_append = " systemd"
-VIRTUAL-RUNTIME_init_manager = "systemd"
-MACHINE_FEATURES_BACKFILL_CONSIDERED = "sysvinit"
